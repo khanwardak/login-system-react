@@ -27,15 +27,14 @@ function Login (){
     }
     function OnLoginClicked(){
         // if user Authenticated setAuthenticate(true)
-        if(username ==='khan' && password==='khan'){
-            authContext.setAuthenticated(true)
+        if(authContext.login(username,password)){
+           
             setSuccessMessage(true)
             setErrorMessage(false)
-            console.log('success')
+            // console.log('success')
             navigate(`/welcom/${username}`);
         }
         else{
-            authContext.setAuthenticated(false)
             setErrorMessage(true)
             setSuccessMessage(false) 
         }

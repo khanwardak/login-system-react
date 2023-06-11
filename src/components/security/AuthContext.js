@@ -16,12 +16,24 @@ export const useAuth =() =>useContext(AuthContext);
 export default function AuthProvider ({children}){
     const [number, setNumber] = useState(15);
     const [isAuthenticated, setAuthenticated] = useState(false)
+
+    function login(username, password){
+        if(username ==='khan' && password==='khan'){
+            setAuthenticated(true)
+          return true
+        }
+        else{
+            setAuthenticated(false)
+            return false
+        }
+    }
+
     // console.log(isAuthenticated)
     
     return(
         // pass the number value to all its child components
         
-        <AuthContext.Provider value={{number,isAuthenticated,setAuthenticated}}>
+        <AuthContext.Provider value={{number,isAuthenticated,setAuthenticated, login}}>
             {children}
         </AuthContext.Provider>
     )
